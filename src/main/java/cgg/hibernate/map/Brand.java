@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import javax.persistence.CascadeType;
+
 
 
 @Entity
@@ -19,7 +21,7 @@ public class Brand {
 	@Column(name="brand_name")
 	private String brandName;
 	
-	@OneToMany(mappedBy="brand",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="brand",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
 	private List<Product> products;
 	
 	public List<Product> getProducts() {
