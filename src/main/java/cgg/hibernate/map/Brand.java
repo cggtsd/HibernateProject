@@ -2,17 +2,22 @@ package cgg.hibernate.map;
 
 import java.util.List;
 
+import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import javax.persistence.CascadeType;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 
 
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Brand {
 	
 	@Id
@@ -22,6 +27,7 @@ public class Brand {
 	private String brandName;
 	
 	@OneToMany(mappedBy="brand",fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 	private List<Product> products;
 	
 	public List<Product> getProducts() {
@@ -51,7 +57,10 @@ public class Brand {
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
+	@Override
+	public String toString() {
+		return "Brand [brandId=" + brandId + ", brandName=" + brandName + ", products=" + products + "]";
+	}
 	
 	
-
 }

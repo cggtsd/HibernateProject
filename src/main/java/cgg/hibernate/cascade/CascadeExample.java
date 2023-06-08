@@ -19,15 +19,15 @@ public class CascadeExample {
 		
 		
 		Brand b1 = new Brand();
-		b1.setBrandId(4);
+		b1.setBrandId(5);
 		b1.setBrandName("Samsung");
 		
 		Product p1 = new Product(41,"Samsung Phone");
-		
+		p1.setBrand(b1);
 		Product p2 = new Product(42,"Samsung Laptop");
-		
+		p2.setBrand(b1);
 		Product p3 = new Product(43,"Samsung AC");
-		
+		p3.setBrand(b1);
 		ArrayList<Product> list = new ArrayList<Product>();
 		
 		list.add(p1);

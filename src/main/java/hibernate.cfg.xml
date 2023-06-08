@@ -29,14 +29,22 @@
 		<property name="format_sql">
 			true
 		</property>
-		<mapping class="cgg.hibernate.Question"/>
-		<mapping class="cgg.hibernate.Answer"/>
-		<mapping class="cgg.hibernate.map.Product"/>
-		<mapping class="cgg.hibernate.map.Brand"/>
-		<mapping class="cgg.hibernate.map1.Employee"/>
-		<mapping class="cgg.hibernate.map1.Project"/>
-        <mapping class="cgg.hibernate.Student"/>
-
+		<property name="cache.use_second_level_cache">
+			true
+		</property>
+		<property name="cache.region.factory_class">
+			org.hibernate.cache.ehcache.internal.EhcacheRegionFactory
+		</property>
+		<mapping class="cgg.hibernate.Question" />
+		<mapping class="cgg.hibernate.Answer" />
+		<mapping class="cgg.hibernate.map.Product" />
+		<mapping class="cgg.hibernate.map.Brand" />
+		<mapping class="cgg.hibernate.map1.Employee" />
+		<mapping class="cgg.hibernate.map1.Project" />
+		<mapping class="cgg.hibernate.Student" />
+        <mapping resource="cgg/hibernate/xmlmapping/Person.hbm.xml"/>
+        <mapping resource="cgg/hibernate/xmlmapping/Department.hbm.xml"/>
+        <mapping resource="cgg/hibernate/xmlmapping/Employeee.hbm.xml"/>
 	</session-factory>
 
 

@@ -1,12 +1,18 @@
 package cgg.hibernate.map;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Product {
 	@Id
 	@Column(name="product_id")
@@ -44,9 +50,10 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", brand=" + brand + "]";
+	}
 	
-	
-	
-	
-	
+		
 }
